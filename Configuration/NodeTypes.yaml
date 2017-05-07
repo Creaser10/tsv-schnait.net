@@ -1,0 +1,291 @@
+# If you need more than just the "main" content area you can uncomment the snippet below. It will add a "sidebar" area
+# to your pages. You can add as many areas as you like, still only those that are rendered in your TypoScript and
+# Template are visible on your page.
+---
+#'TYPO3.Neos.NodeTypes:Page':
+#  childNodes:
+#    'sidebar':
+#      type: 'TYPO3.Neos:ContentCollection'
+
+
+
+##
+# Adjust the "Headline" node type:
+# Enable 4th and 5th level and disable "p" in the aloha format selector of the "title" property
+#
+'TYPO3.Neos.NodeTypes:Headline':
+  ui:
+    inspector:
+      groups:
+        advanced:
+          label: 'Advanced'
+          position: 2
+          icon: 'icon-fort-awesome'
+  properties:
+    ankerid:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'AnkerID'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'advanced'
+          editor: Content/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            placeholder: 'Bitte Anker ID wählen...'
+            values:
+              '':
+                label: ''
+              a:
+                label: 'a'
+              b:
+                label: 'b'
+              c:
+                label: 'c'
+              d:
+                label: 'd'
+              e:
+                label: 'e'
+              f:
+                label: 'f'
+              g:
+                label: 'g'
+              h:
+                label: 'h'
+              i:
+                label: 'i'
+              j:
+                label: 'j'
+    'title':
+      ui:
+        aloha:
+          'format':
+            'h4': TRUE
+            'h5': TRUE
+            'h6': TRUE
+
+
+##
+# A "Youtube" content element
+#
+'tsv.schnait:YouTube':
+  superTypes:
+    'TYPO3.Neos:Content': TRUE
+  ui:
+    label: YouTube
+    icon: 'icon-youtube'
+    inspector:
+      groups:
+        'video':
+          label: Video
+          position: 50
+    help:
+      message: 'Embeds a YouTube video as content defined by a video ID.'
+  properties:
+    'video':
+      type: string
+      defaultValue: ''
+      ui:
+        label: Video
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+        help:
+          message: |
+            The video identifier is visible in the URL to a youtube video
+
+            Eg. in the URL
+
+            `https://youtu.be/G6D1YI-41ao`
+
+            the video id is `G6D1YI-41ao`.
+    'width':
+      type: integer
+      defaultValue: 400
+      ui:
+        label: Breite
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+    'height':
+      type: integer
+      defaultValue: 300
+      ui:
+        label: Höhe
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'video'
+
+
+
+##
+# Adjust the "TwoColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:TwoColumn':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+                
+                
+##
+# Adjust the "ThreeColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:ThreeColumn':
+  properties:
+    'layout':
+      defaultValue: '4-4-4'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '33-33-33': ~
+              '50-25-25': ~
+              '25-50-25': ~
+              '25-25-50': ~
+              '4-4-4':
+                label: '33% / 33% / 33%'
+              '6-3-3':
+                label: '50% / 25% / 33%'
+              '3-6-3':
+                label: '25% / 50% / 25%'
+              '3-3-6':
+                label: '25% / 25% / 50%'
+
+##
+# Adjust the "FourColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:FourColumn':
+  properties:
+    'layout':
+      defaultValue: '3-3-3-3'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '25-25-25-25': ~
+              '3-3-3-3':
+                label: '25% / 25% / 25% / 25%'
+                
+                
+##
+# Adjust the "FiveColumn" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:FiveColumn':
+  properties:
+    'layout':
+      defaultValue: '15-15-15-15-15'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '20-20-20-20-20': ~
+              '15-15-15-15-15':
+                label: '20% / 20% / 20% / 20% / 20%'
+                
+
+              
+##
+# Adjust the "TwoColumnGrey" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:TwoColumnGrey':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+
+##
+# Adjust the "FourColumnGrey" node type:
+# Disable some of the layout options, override labels and set the default layout
+#
+'TYPO3.Neos.NodeTypes:FourColumnGrey':
+  properties:
+    'layout':
+      defaultValue: '3-3-3-3'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '25-25-25-25': ~
+              '3-3-3-3':
+                label: '25% / 25% / 25% / 25%'
+                
+'TYPO3.Neos.NodeTypes:TwoColumnBlue':
+  properties:
+    'layout':
+      defaultValue: '6-6'
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              '50-50': ~
+              '75-25': ~
+              '25-75': ~
+              '66-33': ~
+              '33-66': ~
+              '6-6':
+                label: '50% / 50%'
+              '8-4':
+                label: '66% / 33%'
+              '4-8':
+                label: '33% / 66%'
+
+'tsv.schnait:FancyImage':
+  superTypes:
+    #'TYPO3.Neos:Content': TRUE
+    #'TYPO3.Neos.NodeTypes:ContentImageMixin': TRUE
+    'TYPO3.Neos.NodeTypes:Image': TRUE
+  ui:
+    label: FancyImage
+    icon: 'icon-picture'
+    position: 1600
+    inspector:
+      groups:
+        fancyimage:
+          label: 'FancyImage'
+          position: 2
+          icon: 'icon-fort-awesome'
+  properties:
+    gruppe:
+      type: string
+      defaultValue: 'Fancybox'
+      ui:
+        label: 'Gruppe'
+        inspector:
+          group: 'fancyimage'
+          editorOptions:
+            placeholder: 'Gruppenname eintragen'
+            maxlength: 20

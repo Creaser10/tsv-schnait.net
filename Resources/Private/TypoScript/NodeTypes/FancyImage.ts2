@@ -1,0 +1,3 @@
+prototype(tsv.schnait:FancyImage) {
+       partialRootPath = 'resource://tsv.schnait/Private/Templates/NodeTypes/Partials'
+}

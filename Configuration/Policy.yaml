@@ -1,0 +1,156 @@
+#                                                                        #
+# Security policy for the tsv.schnait package                 #
+#                                                                        #
+
+privilegeTargets:
+
+  'TYPO3\TYPO3CR\Security\Authorization\Privilege\Node\EditNodePrivilege':
+
+    'tsv.schnait:NodeHome':
+      # Node muss der Rolle erlaubt werden - read only
+      matcher: '("abaef57e-65c6-4193-ad58-a4e484b6e08a")'
+
+  'TYPO3\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
+   
+    'tsv.schnait:NodeAktuelles':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("0185c8cc-3d9f-46b5-8f38-307728c72389")'
+    
+    'tsv.schnait:NodeSportangebot':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("0618377c-29d3-491d-b5df-978e077080f2")'
+    
+    'tsv.schnait:NodeVerein':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("166cfcfa-114c-4643-b92d-d82f2b0b355f")'
+    
+    'tsv.schnait:NodeLeichtathletik':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("0021d2da-b21d-4543-ac76-2f800fb50bf1")'
+    
+    'tsv.schnait:NodeTischtennis':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("935982cb-83ad-4c07-95c6-7d7bf4703916")'
+    
+    'tsv.schnait:NodeTurnen':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("b85cbd69-27d8-4160-a884-e09df44762c3")'
+    
+    'tsv.schnait:NodeVersehrtensport':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("c35dc0cc-d4e6-4eee-944c-496fdab01c75")'
+    
+    'tsv.schnait:NodeKontakt':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("eeaab130-2990-45bf-97d6-078557d342f9")'
+      
+    'tsv.schnait:NodeImpressum':
+      # Node + Kinder muss der Rolle erlaubt werden
+      matcher: 'isDescendantNodeOf("41b1840a-e45d-403c-9027-ebb799c67992")'
+
+roles:
+#Custom Roles Abteilungen
+  'TYPO3.Neos:LeichtathletikEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeLeichtathletik'
+        permission: GRANT
+
+  'TYPO3.Neos:TischtennisEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeTischtennis'
+        permission: GRANT
+
+  'TYPO3.Neos:TurnenEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeTurnen'
+        permission: GRANT
+
+  'TYPO3.Neos:VersehrtensportEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeVersehrtensport'
+        permission: GRANT
+
+#Custom Roles restliche Bereiche
+  'TYPO3.Neos:HomeEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeHome'
+        permission: GRANT
+  
+  'TYPO3.Neos:AktuellesEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeAktuelles'
+        permission: GRANT
+
+  'TYPO3.Neos:SportangebotEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeSportangebot'
+        permission: GRANT
+
+  'TYPO3.Neos:VereinEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeVerein'
+        permission: GRANT
+
+  'TYPO3.Neos:KontaktEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeKontakt'
+        permission: GRANT
+
+  'TYPO3.Neos:ImpressumEditor':
+    parentRoles: ['TYPO3.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeImpressum'
+        permission: GRANT
+
+#Admin
+  'TYPO3.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'tsv.schnait:NodeHome'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeAktuelles'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeSportangebot'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeVerein'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeLeichtathletik'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeTischtennis'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeTurnen'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeVersehrtensport'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeKontakt'
+        permission: GRANT
+      -
+        privilegeTarget: 'tsv.schnait:NodeImpressum'
+        permission: GRANT

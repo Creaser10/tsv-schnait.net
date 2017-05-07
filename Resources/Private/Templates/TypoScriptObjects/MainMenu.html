@@ -1,0 +1,106 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:render section="itemList" arguments="{items: items, site: site}" />
+
+<f:section name="itemList">
+  <nav class="navbar navbar-inverse navbar" role="navigation">
+    <div class="navbar-logo">
+      <!--<a class="navbar-brand" href="{neos:uri.node(node: '~')}">Neos</a>-->
+      <a href="{neos:uri.node(node: '~')}">
+        <img src="{f:uri.resource(path: 'Images/TSV_Logo.gif', package: 'tsv.schnait')}" media="all">
+      </a>
+    </div>
+
+    <div class="navbar-content">
+      <ul class="nav navbar-nav">                          
+        <f:for each="{items}" as="item" iteration="menuItemIterator">
+          <li class="dropdown">
+            <f:if condition="{item.subItems}">
+              <f:then>
+                <neos:link.node node="{item.node}">
+                  {item.label}
+                  <span class="caret"></span>
+                </neos:link.node>
+
+                <f:render section="subList" arguments="{items: item.subItems}" />
+              </f:then>
+
+              <f:else>
+                <neos:link.node node="{item.node}">
+                  {item.label}
+                </neos:link.node>
+              </f:else>
+            </f:if>
+          </li>
+        </f:for>                                  
+      </ul>
+     </div>
+  </nav>
+</f:section>
+
+
+<f:section name="subList">
+    
+      <ul class="dropdown-menu multi-level">
+        <f:for each="{items}" as="item" iteration="iteration">
+          
+            <f:if condition="{item.subItems}">
+              <f:then>
+                <li class="dropdown-submenu">
+                  <neos:link.node node="{item.node}">
+                    {item.label}
+                  </neos:link.node>
+                  <f:render section="thirdLevel" arguments="{items: item.subItems}" />
+                </li>
+                <f:if condition="{iteration.isLast}">
+                  <f:then>
+                  </f:then>
+                  <f:else>
+                    <li class="divider"></li>
+                  </f:else>
+                </f:if>
+              </f:then>
+              
+              <f:else>
+                <li>         
+                  <neos:link.node node="{item.node}">
+                    {item.label}
+                  </neos:link.node>   
+                </li>
+                <f:if condition="{iteration.isLast}">
+                  <f:then>
+                  </f:then>
+                  <f:else>
+                    <li class="divider"></li>
+                  </f:else>
+                </f:if>
+              </f:else>
+            </f:if>
+          
+        </f:for>
+      </ul>
+      
+          
+</f:section>
+
+
+<f:section name="thirdLevel">
+  <ul class="dropdown-menu">
+    
+        <f:for each="{items}" as="item" iteration="iteration">
+          <li>
+            <neos:link.node node="{item.node}">
+              {item.label}
+            </neos:link.node>
+          </li>
+          <f:if condition="{iteration.isLast}">
+            <f:then>
+            </f:then>
+            <f:else>
+              <li class="divider"></li>
+            </f:else>
+          </f:if>
+        </f:for>
+    
+  </ul>
+  
+</f:section>

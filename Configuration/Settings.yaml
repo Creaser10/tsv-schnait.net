@@ -1,0 +1,12 @@
+##
+# Adjust the node tree loading level
+#
+
+TYPO3:
+  Neos:
+    userInterface:
+      navigateComponent:
+        nodeTree:
+          loadingDepth: 2
+#        structureTree:
+#          loadingDepth: 1
